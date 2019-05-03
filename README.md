@@ -1,24 +1,60 @@
-# README
+# Unosmium
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Note: Unosmium is still under development. This README describes what we would
+like the status to be at the intial release.**
 
-Things you may want to cover:
+Unosminum is an open-source decentralized scoring system for Science Olympiad
+tournaments.
 
-* Ruby version
+To set up Unosmium for your next Science Olympiad Invitational (or
+States/Nats?), follow the instructions below.
 
-* System dependencies
+Alternatively, contact unosmium@gmail.com to have an instance of Unosmium setup
+for you. We ask for a payment of $10 for this service. Regardless, the results
+of your tournament will always be freely accessible to you at (link to GitHub
+pages site).
 
-* Configuration
+## Prerequisites
 
-* Database creation
+- Git: https://git-scm.com/downloads
+- A free Heroku account: https://signup.heroku.com/login
+- Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli
 
-* Database initialization
+## Instructions
 
-* How to run the test suite
+These instructions assume some familiarity with the using command line.
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Create a new app at <https://dashboard.heroku.com/apps>. We recommend choosing
+   a long name that would be difficult to guess to avoid risk of DDoS attacks.
+2. Open up a terminal on your desktop.
+3. Clone this repository:
+   ```
+   git clone https://github.com/zqianem/unosmium.git
+   ```
+4. Login to Heroku CLI:
+   ```
+   heroku login
+   ```
+5. Deploy to Heroku:
+   ```
+   heroku git:remote -a [name of the app from step 1]
+   git push heroku master
+   ```
+   Replace "[name of the app from step 1]" with the actual app name, e.g:
+   ```
+   heroku git:remote -a scienceolympiadunosmiumtournament
+   git push heroku master
+   ```
+6. Open the app at the URL given after the push and complete the Tournament
+   Director setup pages.
 
-* Deployment instructions
+## Features
 
-* ...
+Unosmium provides a customized website with the following features:
+
+- Record-keeping of participating teams for the Tournament Director
+- Remote scores entry for the Event Supervisors
+- Real-time Awards Ceremony slideshow generation
+- Printable results PDF output
+- Online results hosting at (a link to some GitHub pages site, TBD)
+
