@@ -20,7 +20,7 @@ pages site).
 - Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli
 - Git: https://git-scm.com/downloads
 
-## Instructions
+## Installation / Setup
 
 These instructions assume some familiarity with the using command line.
 
