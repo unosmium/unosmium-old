@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :name
       t.boolean :trial
       t.boolean :trialed
-      t.string :scoring
+      t.integer :scoring
 
       t.timestamps
     end

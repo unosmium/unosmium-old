@@ -3,10 +3,10 @@ class CreateTeams < ActiveRecord::Migration[6.0]
     create_table :teams do |t|
       t.string :school
       t.string :suffix
-      t.string :subdivision
+      t.integer :subdivision
       t.integer :number
       t.string :city
-      t.string :state
+      t.integer :state
 
       t.timestamps
     end

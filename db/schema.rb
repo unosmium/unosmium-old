@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
     t.string "name"
     t.boolean "trial"
     t.boolean "trialed"
-    t.string "scoring"
+    t.integer "scoring"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_events_on_name", unique: true
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   create_table "teams", force: :cascade do |t|
     t.string "school"
     t.string "suffix"
-    t.string "subdivision"
+    t.integer "subdivision"
     t.integer "number"
     t.string "city"
-    t.string "state"
+    t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["number"], name: "index_teams_on_number", unique: true
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
 
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
-    t.string "level"
-    t.string "division"
+    t.integer "level"
+    t.integer "division"
     t.integer "year"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
