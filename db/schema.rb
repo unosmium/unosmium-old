@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.boolean "trial"
-    t.boolean "trialed"
-    t.integer "scoring"
+    t.string "name", null: false
+    t.boolean "trial", default: false, null: false
+    t.boolean "trialed", default: false, null: false
+    t.integer "scoring", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_events_on_name", unique: true
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
 
   create_table "penalties", force: :cascade do |t|
     t.bigint "team_id", null: false
-    t.integer "points"
+    t.integer "points", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_penalties_on_team_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   create_table "placings", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "team_id", null: false
-    t.boolean "participated"
-    t.boolean "disqualified"
+    t.boolean "participated", default: true, null: false
+    t.boolean "disqualified", default: false, null: false
     t.integer "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   create_table "scores", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "team_id", null: false
-    t.boolean "participated"
-    t.boolean "disqualified"
+    t.boolean "participated", default: true, null: false
+    t.boolean "disqualified", default: false, null: false
     t.decimal "score"
     t.integer "tiebreaker_place"
     t.datetime "created_at", precision: 6, null: false
@@ -59,23 +59,23 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "school"
+    t.string "school", null: false
     t.string "suffix"
     t.integer "subdivision"
-    t.integer "number"
-    t.string "city"
-    t.integer "state"
+    t.integer "number", null: false
+    t.string "city", null: false
+    t.integer "state", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["number"], name: "index_teams_on_number", unique: true
   end
 
   create_table "tournaments", force: :cascade do |t|
-    t.string "name"
-    t.integer "level"
-    t.integer "division"
-    t.integer "year"
-    t.date "date"
+    t.string "name", null: false
+    t.integer "level", default: 0, null: false
+    t.integer "division", null: false
+    t.integer "year", null: false
+    t.date "date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
