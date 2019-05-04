@@ -16,37 +16,35 @@ pages site).
 
 ## Prerequisites
 
-- Git: https://git-scm.com/downloads
 - A free Heroku account: https://signup.heroku.com/login
 - Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli
+- Git: https://git-scm.com/downloads
 
 ## Instructions
 
 These instructions assume some familiarity with the using command line.
 
-1. Create a new app at <https://dashboard.heroku.com/apps>. We recommend choosing
-   a long name that would be difficult to guess to avoid risk of DDoS attacks.
-2. Open up a terminal on your desktop.
-3. Clone this repository:
+1. Clone this repository:
    ```
    git clone https://github.com/zqianem/unosmium.git
    ```
-4. Login to Heroku CLI:
+2. Login to Heroku CLI:
    ```
    heroku login
    ```
-5. Deploy to Heroku:
+3. Create a new app on Heroku
    ```
-   heroku git:remote -a [name of the app from step 1]
+   heroku create
+   ```
+4. Deploy to Heroku:
+   ```
    git push heroku master
    ```
-   Replace "[name of the app from step 1]" with the actual app name, e.g:
+5. Open the app and complete the Tournament Director setup pages in your
+   browser:
    ```
-   heroku git:remote -a scienceolympiadunosmiumtournament
-   git push heroku master
+   heroku open
    ```
-6. Open the app at the URL given after the push and complete the Tournament
-   Director setup pages.
 
 ## Features
 
