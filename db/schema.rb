@@ -33,18 +33,6 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
     t.index ["team_id"], name: "index_penalties_on_team_id"
   end
 
-  create_table "placings", force: :cascade do |t|
-    t.bigint "event_id", null: false
-    t.bigint "team_id", null: false
-    t.boolean "participated", default: true, null: false
-    t.boolean "disqualified", default: false, null: false
-    t.integer "place"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_placings_on_event_id"
-    t.index ["team_id"], name: "index_placings_on_team_id"
-  end
-
   create_table "scores", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "team_id", null: false
@@ -81,8 +69,6 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
   end
 
   add_foreign_key "penalties", "teams"
-  add_foreign_key "placings", "events"
-  add_foreign_key "placings", "teams"
   add_foreign_key "scores", "events"
   add_foreign_key "scores", "teams"
 end
