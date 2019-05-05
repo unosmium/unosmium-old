@@ -1,4 +1,4 @@
 class Tournament < ApplicationRecord
-  enum level: [:Invitational, :States, :Nationals]
+  enum level: [:Invitational, :Regionals, :States, :Nationals]
   enum division: [:A, :B, :C]
 end
