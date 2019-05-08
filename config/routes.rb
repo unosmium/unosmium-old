@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: "tournaments#index"
 
-  resources :tournaments, only: [:index, :show, :new, :create]
+  resources :tournaments do
+    resources :events
+    resources :teams
+  end
 end

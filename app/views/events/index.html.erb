@@ -1,0 +1,14 @@
+<% if @tournament %>
+  <p> Hello! Welcome to the events index for: <%= @tournament.name %> </p>
+  <table>
+    <% @events.each do |event| %>
+      <tr>
+        <td> <%= event.name %> </td>
+        <td> <%= link_to "See", tournament_event_path(@tournament.id, event.id) %> </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "Create an Event", new_tournament_event_path(@tournament.id) %>
+<% else %>
+  <p> This resource is unavailable </p>
+<% end %>

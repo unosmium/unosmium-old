@@ -1,0 +1,14 @@
+<% if @tournament %>
+  <p> Hello! Welcome to the teams index for: <%= @tournament.name %> </p>
+  <table>
+    <% @teams.each do |team| %>
+      <tr>
+        <td> <%= team.school %> </td>
+        <td> <%= link_to "See", tournament_team_path(@tournament.id, team.id) %> </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "Add a Team", new_tournament_team_path(@tournament.id) %>
+<% else %>
+  <p> This resource is unavailable </p>
+<% end %>

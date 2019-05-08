@@ -1,2 +1,6 @@
 <p> Hello! </p>
 <p> This is <%= @tournament.name %> on <%= @tournament.date %> </p>
+
+<%= link_to "Tournament Events", tournament_events_path(@tournament.id) %>
+<p> Or: </p>
+<%= link_to "Tournament Teams", tournament_teams_path(@tournament.id) %>

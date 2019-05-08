@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_144955) do
+ActiveRecord::Schema.define(version: 2019_05_08_234646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
     t.integer "scoring", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_events_on_name", unique: true
+    t.bigint "tournament_id", null: false
+    t.index ["name"], name: "index_events_on_name"
+    t.index ["tournament_id"], name: "index_events_on_tournament_id"
   end
 
   create_table "penalties", force: :cascade do |t|
@@ -55,7 +57,9 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
     t.integer "state", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["number"], name: "index_teams_on_number", unique: true
+    t.bigint "tournament_id", null: false
+    t.index ["number"], name: "index_teams_on_number"
+    t.index ["tournament_id"], name: "index_teams_on_tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|
@@ -68,7 +72,9 @@ ActiveRecord::Schema.define(version: 2019_05_04_144955) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "events", "tournaments"
   add_foreign_key "penalties", "teams"
   add_foreign_key "scores", "events"
   add_foreign_key "scores", "teams"
+  add_foreign_key "teams", "tournaments"
 end

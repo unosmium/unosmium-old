@@ -13,11 +13,14 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tournament_params)
-    if @tournament.save!
+    if @tournament.save
       redirect_to @tournament
     else
       redirect_to tournaments_path
     end
+  end
+
+  def destroy
   end
 
   private
