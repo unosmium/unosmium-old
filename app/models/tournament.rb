@@ -1,4 +1,10 @@
-class Tournament < ApplicationRecord
+class Tournament < ApplicationRecord  
   enum level: [:Invitational, :Regionals, :States, :Nationals]
   enum division: [:A, :B, :C]
+
+  has_many :events
+  has_many :teams
+
+  validates :level, presence: true
+  validates :division, presence: true
 end

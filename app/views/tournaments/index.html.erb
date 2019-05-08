@@ -1,0 +1,11 @@
+<p> Hello World </p>
+<table>
+  <% @tournaments.each do |tournament| %>
+    <tr>
+      <td> <%= tournament.name %> </td>
+      <td> <%= link_to "See", tournament_path(tournament.id) %> </td>
+    </tr>
+  <% end %>
+</table>
+<p> Or:</p>
+<%= link_to "Create New", new_tournament_path %>

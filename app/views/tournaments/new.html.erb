@@ -1,0 +1,8 @@
+<%= form_for @tournament do |f| %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>Division: <%= f.select :division, Tournament.divisions.keys %></p>
+  <p>Competition Level <%= f.select :level, Tournament.levels.keys%> </p>
+  <p>Year <%= f.text_field :year %></p>
+  <p>Date <%= f.date_select :date %></p>
+  <p><%= f.submit %></p>
+<% end %>
