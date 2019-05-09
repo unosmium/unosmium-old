@@ -30,7 +30,10 @@ RSpec.describe Event, type: :model do
       event = t.events[0]
       allow(event.scores[5]).to receive(:participated).and_return(true)
       allow(event.scores[5]).to receive(:score).and_return(nil)
-      expect(event.standings.map{ |standing| standing[0]}[9]).to eq(t.number_of_teams)
+      allow(event.scores[4]).to receive(:participated).and_return(true)
+      allow(event.scores[4]).to receive(:score).and_return(nil)
+
+      expect(event.standings.map{ |standing| standing[0]}[8]).to eq(t.number_of_teams)
     end
   end
 

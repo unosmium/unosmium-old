@@ -11,4 +11,8 @@ class Tournament < ApplicationRecord
   def number_of_teams
     teams.length
   end
+
+  def final_standings
+    teams.sort_by(&:score)
+  end
 end
