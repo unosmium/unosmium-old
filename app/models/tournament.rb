@@ -7,4 +7,8 @@ class Tournament < ApplicationRecord
 
   validates :level, presence: true
   validates :division, presence: true
+
+  def number_of_teams
+    teams.length
+  end
 end
