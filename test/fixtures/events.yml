@@ -4,10 +4,12 @@ one:
   name: MyString
   trial: false
   trialed: false
-  scoring: MyString
+  scoring: 0
+  tournament: one
 
 two:
   name: MyString
   trial: false
   trialed: false
-  scoring: MyString
+  scoring: 1
+  tournament: one

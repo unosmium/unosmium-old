@@ -6,7 +6,8 @@ one:
   subdivision: MyString
   number: 1
   city: MyString
-  state: MyString
+  state: 29
+  tournament: one
 
 two:
   school: MyString
@@ -14,4 +15,5 @@ two:
   subdivision: MyString
   number: 1
   city: MyString
-  state: MyString
+  state: 11
+  tournament: two

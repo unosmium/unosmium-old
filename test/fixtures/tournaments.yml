@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  level: MyString
-  division: MyString
+  level: 0
+  division: 1
   year: 1
   date: 2019-05-04
 
 two:
   name: MyString
-  level: MyString
-  division: MyString
+  level: 0
+  division: 2
   year: 1
   date: 2019-05-04
