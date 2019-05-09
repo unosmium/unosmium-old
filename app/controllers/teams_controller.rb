@@ -20,10 +20,10 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.tournament_id = params[:tournament_id]
     if @team.save!
-        redirect_to tournament_teams_path
-      else
-        redirect_to tournament_team(@team.id)
-      end
+      redirect_to tournament_teams_path
+    else
+      redirect_to tournament_team(@team.id)
+    end
   end
 
   def destroy

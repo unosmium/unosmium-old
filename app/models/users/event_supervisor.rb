@@ -1,0 +1,3 @@
+class EventSupervisor < User
+
+end
