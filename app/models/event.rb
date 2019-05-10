@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :scores
   belongs_to :tournament
 
+  # Contains the placing information wihout exhibition teams included
   def standings
     groups = []
     ungrouped_scores = scores
@@ -25,22 +26,22 @@ class Event < ApplicationRecord
       groups[tier].reverse! if(scoring == :high)
 
       groups[tier].each do |score|
-
+        next if score.team.exhibition
         standings << [placing, score]
         placing = placing + 1
       end
     end
 
     groups[4].each do |score|
-      standings << [tournament.number_of_teams, score]
+      standings << [tournament.number_of_competing_teams, score]
     end
 
     groups[5].each do |score|
-      standings << [1 + tournament.number_of_teams, score]
+      standings << [1 + tournament.number_of_competing_teams, score]
     end
 
     groups[6].each do |score|
-      standings << [2 + tournament.number_of_teams, score]
+      standings << [2 + tournament.number_of_competing_teams, score]
     end
 
     standings

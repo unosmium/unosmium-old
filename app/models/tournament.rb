@@ -18,6 +18,10 @@ class Tournament < ApplicationRecord
     teams.length
   end
 
+  def number_of_competing_teams
+    teams.reduce(0) { |sum, team| sum + (team.exhibition ? 0 : 1) }
+  end
+
   def final_standings
     teams.sort_by(&:score)
   end

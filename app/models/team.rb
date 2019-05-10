@@ -14,12 +14,10 @@ class Team < ApplicationRecord
   end
 
   def points
-    points = 0
-    tournament.events.each do |event|
+    tournament.events.reduce(0) do |points, event|
       next if event.trial || event.trialed
-      team_score = team_score + event.placing(number)
+      points + event.placing(number)
     end
-    points
   end
 
   def penalized_points
