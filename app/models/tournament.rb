@@ -4,8 +4,6 @@ class Tournament < ApplicationRecord
 
   has_many :events
   has_many :teams
-  has_many :admins
-  has_many :event_supervisors
 
   validates :level, presence: true
   validates :division, presence: true
