@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   enum scoring: [:high, :low]
 
   has_many :scores
+  has_many :event_supervisors
   belongs_to :tournament
 
   def standings
