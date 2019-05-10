@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_181021) do
+ActiveRecord::Schema.define(version: 2019_05_10_161201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_supervisors_events", id: false, force: :cascade do |t|
+    t.bigint "event_supervisor_id", null: false
+    t.bigint "event_id", null: false
+    t.index ["event_id", "event_supervisor_id"], name: "index_events_on_supervisors", unique: true
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +39,16 @@ ActiveRecord::Schema.define(version: 2019_05_09_181021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_penalties_on_team_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "tournament_id", null: false
+    t.index ["tournament_id"], name: "index_roles_on_tournament_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -73,8 +89,13 @@ ActiveRecord::Schema.define(version: 2019_05_09_181021) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tournaments_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tournament_id", null: false
+    t.index ["tournament_id", "user_id"], name: "index_tournaments_users_on_tournament_id_and_user_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "type"
     t.string "email"
     t.string "password"
     t.string "first_name"
@@ -86,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_05_09_181021) do
 
   add_foreign_key "events", "tournaments"
   add_foreign_key "penalties", "teams"
+  add_foreign_key "roles", "tournaments"
+  add_foreign_key "roles", "users"
   add_foreign_key "scores", "events"
   add_foreign_key "scores", "teams"
   add_foreign_key "teams", "tournaments"
