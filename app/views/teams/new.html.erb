@@ -5,6 +5,7 @@
   <p>City <%= f.text_field :city %></p>
   <p>State <%= f.select :state, Team.states.keys %></p>
   <p>Subdivision <%= f.select :subdivision, Team.subdivisions.keys %> </p>
+  <p>Exhibition Team?: <%= f.check_box :exhibition %></p>
   <p><%= f.submit %></p>
 <% end %>
 
