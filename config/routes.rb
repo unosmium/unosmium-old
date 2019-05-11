@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :tournaments do
     resources :events
     resources :teams
+    resources :admin_roles
   end
+
+  resources :users
 end
