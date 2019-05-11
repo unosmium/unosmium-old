@@ -19,7 +19,7 @@ class AdminRolesController < ApplicationController
 
   def create
     @admin_role = AdminRole.new(admin_role_params)
-    @tournament = admin_role_params[:tournament_id]
+    @tournament = params[:tournament_id]
     if @admin_role.save
       redirect_to tournament_admin_role_path(@tournament, @admin_role)
     else

@@ -19,7 +19,7 @@ class EventSupervisorRolesController < ApplicationController
 
   def create
     @event_supervisor_role = EventSupervisorRole.new(event_supervisor_params)
-    tournament_id = event_supervisor_params[:tournament_id]
+    tournament_id = params[:tournament_id]
     if @event_supervisor_role.save
       redirect_to tournament_event_supervisor_role_path(tournament_id, @event_supervisor_role.id)
     else
