@@ -1,1 +1,4 @@
 <%= "Showing the user page for #{@user.full_name}" %>
+
+<p> You can permanently deactivate your account here </p>
+<%= link_to "Deactivate account", user_path, method: :delete %>
