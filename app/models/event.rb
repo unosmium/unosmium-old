@@ -5,6 +5,11 @@ class Event < ApplicationRecord
   belongs_to :tournament
 
   validates :name, presence: true
+  # validates :trial
+  # validates :trialed
+  validates :scoring, presence: true
+
+  validates_uniqueness_of :name, scope: :tournament_id
 
   # Contains the placing information wihout exhibition teams included
   def standings

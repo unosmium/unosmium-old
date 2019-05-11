@@ -9,6 +9,16 @@ class Team < ApplicationRecord
 
   belongs_to :tournament
 
+  validates :school, presence: true
+  #validates :suffix
+  validates :subdivision, presence: true
+  validates :number, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  #validates :exhibition
+
+  validates_uniqueness_of :number, scope: :tournament_id
+
   def score
     points - penalized_points
   end

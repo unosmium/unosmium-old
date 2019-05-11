@@ -12,8 +12,12 @@ class Tournament < ApplicationRecord
 
   has_and_belongs_to_many :presentations
 
+  validates :name, presence: true
   validates :level, presence: true
   validates :division, presence: true
+  validates :year, presence: true
+  validates :date, presence: true
+
 
   def number_of_teams
     teams.length
