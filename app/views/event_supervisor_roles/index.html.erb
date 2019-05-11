@@ -1,0 +1,14 @@
+<% if @tournament %>
+  <p> Event Supervisors Index for <%= @tournament.name %> </p>
+  <table>
+    <% @event_supervisor_roles.each do |event_supervisor_role| %>
+      <tr>
+        <td> <%= User.find(event_supervisor_role.user_id).full_name %> </td>
+        <td> <%= link_to "See", tournament_event_supervisor_role_path(@tournament.id, event_supervisor_role.id) %> </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "Add an Event Supervisor", new_tournament_event_supervisor_role_path(@tournament.id) %>
+<% else %>
+  <p> This resource is unavailable </p>
+<% end %>

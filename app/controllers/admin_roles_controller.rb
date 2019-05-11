@@ -33,7 +33,7 @@ class AdminRolesController < ApplicationController
     if @admin_role.destroy
       redirect_to tournament_admin_roles_path(tournament_id)
     else
-      redirect_to touranment_admin_role(tournament_id, @event.id)
+      redirect_to touranment_admin_role(tournament_id, @admin_role.id)
     end
   end
 

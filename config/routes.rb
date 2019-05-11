@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :events
     resources :teams
     resources :admin_roles
+    resources :event_supervisor_roles
   end
 
   resources :users
