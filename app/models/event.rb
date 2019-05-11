@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :scores
   belongs_to :tournament
 
+  validates :name, presence: true
+
   # Contains the placing information wihout exhibition teams included
   def standings
     groups = []
