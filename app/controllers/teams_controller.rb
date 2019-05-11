@@ -20,9 +20,9 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.tournament_id = params[:tournament_id]
     if @team.save!
-      redirect_to tournament_teams_path
+      redirect_to tournament_team_path(@team.tournament_id, @team.id)
     else
-      redirect_to tournament_team(@team.id)
+      redirect_to tournament_teams_path
     end
   end
 

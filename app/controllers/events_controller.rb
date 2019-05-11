@@ -20,9 +20,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.tournament_id = params[:tournament_id]
     if @event.save
-      redirect_to tournament_events_path
+      redirect_to tournament_event_path(@event.tournament_id, @event.id)
     else
-      redirect_to tournament_event(@event.id)
+      redirect_to tournament_events_path
     end
   end
 
