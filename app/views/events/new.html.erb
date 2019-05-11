@@ -1,3 +1,4 @@
+<h1> Add an Event </h1>
 <%= form_for @event, as: :event, url: tournament_events_path do |f| %>
   <p>Name: <%= f.text_field :name %></p>
   <p>Trial: <%= f.check_box :trial %></p>

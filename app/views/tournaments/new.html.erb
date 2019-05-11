@@ -1,3 +1,4 @@
+<h1> Start a new Tournament </h1>
 <%= form_for @tournament do |f| %>
   <p>Name: <%= f.text_field :name %></p>
   <p>Division: <%= f.select :division, Tournament.divisions.keys %></p>

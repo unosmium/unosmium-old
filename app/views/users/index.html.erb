@@ -5,3 +5,14 @@
 <%= link_to "Start Tournament", new_tournament_path %>
 <p> You can see a list of ongoing tournaments here</p>
 <%= link_to "All Tournaments", tournaments_path %>
+
+<p> All users, for development purposes </p>
+<table>
+  <% @users.each do |user| %>
+  <tr>
+    <td> <%= user.full_name %> </td>
+    <td> <%= user.email %> </td>
+    <td> <%= link_to "see", user_path(user.id) %> </td>
+  </tr>
+  <% end %>
+</table>

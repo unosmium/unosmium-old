@@ -1,3 +1,4 @@
+<h1> Assign Admin Role </h1>
 <%= form_for @admin_role, as: :admin_role, url: tournament_admin_roles_path do |f| %>
   <p>User ID: <%= f.number_field :user_id %></p>
   <p>Tournament ID: <%= f.number_field :tournament_id %></p>

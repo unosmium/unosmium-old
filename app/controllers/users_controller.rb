@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    # debugging purposes
+    @users = User.all
   end
 
   def show
