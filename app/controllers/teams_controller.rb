@@ -36,6 +36,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def penalize
+    @penalty = Penalty.new
+  end
+
   private 
 
   def team_params

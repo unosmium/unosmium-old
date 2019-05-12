@@ -2,3 +2,8 @@
 <p> Hello! Welcome the team page of </p>
 <p> <%= "This is #{@team.school}" %> </p>
 <%= link_to "Remove Team", tournament_team_path(@team.id), method: :delete %>
+
+<h1> Penalize this team</h1>
+<%= link_to "Penalize", penalize_tournament_team_path(params[:tournament_id], @team.id) %>
+
+<%= render partial: 'penalties/index', locals: { penalties: @team.penalties } %>

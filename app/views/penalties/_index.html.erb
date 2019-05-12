@@ -1,0 +1,10 @@
+<h1> Index of Penalties </h1>
+<table>  
+  <% penalties.each_with_index do |penalty, idx| %>
+    <tr>
+      <td> <%= "Penalty #{idx + 1}" %> </td>
+      <td> <%= penalty.points %> </td>
+      <td> <%= link_to "remove", tournament_penalty_path(params[:tournament_id], penalty.id), method: :delete %> </td>
+    </tr>
+  <% end %>
+</table>

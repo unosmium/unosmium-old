@@ -12,10 +12,15 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :teams
+    resources :teams do 
+      member do
+        get 'penalize' => 'teams#penalize', as: 'penalize'
+      end
+    end
     resources :admin_roles
     resources :event_supervisor_roles
     resources :scores, only: %i(create update destroy)
+    resources :penalties, only: %i(create update destroy)
   end
 
   resources :users

@@ -1,0 +1,6 @@
+<h1>Penalties form</h1>
+<%= form_for penalty, as: :penalty, url: tournament_penalties_path(params[:tournament_id]) do |f| %>
+  <%= f.hidden_field :team_id, value: params[:id] %>
+  <p>Points to penalize (will be added to final score): <%= f.number_field :points %></p>
+  <p><%= f.submit %></p>
+<% end %>
