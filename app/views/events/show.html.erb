@@ -2,3 +2,6 @@
 <p> Hello! Welcome to events show </p>
 <p> <%= "This is #{@event.name}" %> </p>
 <%= link_to "Destroy Event", tournament_event_path(@event.id), method: :delete %>
+
+<p> Assign Scores</p>
+<%= link_to "Assign Scores", assign_scores_tournament_event_path(params[:tournament_id]) %>

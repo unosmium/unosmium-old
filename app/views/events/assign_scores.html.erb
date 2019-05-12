@@ -1,0 +1,9 @@
+<% @scores.each do |score| %>
+  <table>
+    <tr>
+      <td> Team: </td>
+      <td><%= "#{score.team.number}" %></td>
+      <td><%= render partial: 'scores/form', locals: { score: score } %></td>
+    </tr>
+  </table>
+<% end %>
