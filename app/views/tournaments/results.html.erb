@@ -1,0 +1,10 @@
+<h1>Results for <%= "#{@tournament.name}" %> tournament</h1>
+<table>
+  <% @results.each_with_index do |team, idx| %>
+  <tr> 
+    <td> <%= "in place #{idx + 1}:" %> </td>
+    <td> <%= "#{team.school} #{team.suffix}, #{team.city} #{team.state}" %></td>
+    <td> <%= "with #{team.score}" %></td>
+  </tr>
+  <% end %>
+</table>

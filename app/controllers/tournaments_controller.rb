@@ -23,6 +23,11 @@ class TournamentsController < ApplicationController
   def destroy
   end
 
+  def results
+    @tournament = Tournament.find(params[:id])
+    @results = @tournament.final_standings
+  end
+
   private
   def tournament_params
     params.require(:tournament).permit(:name, :year, :date, :level, :division)
