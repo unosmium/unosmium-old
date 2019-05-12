@@ -30,7 +30,7 @@ class Event < ApplicationRecord
     placing = 1
     for tier in 0..3
       groups[tier].sort_by!{ |score| score.score }
-      groups[tier].reverse! if(scoring == :high)
+      groups[tier].reverse! if(scoring == "high")
 
       groups[tier].each do |score|
         next if score.team.exhibition

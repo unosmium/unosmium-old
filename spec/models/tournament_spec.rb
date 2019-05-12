@@ -9,13 +9,14 @@ RSpec.describe Tournament, type: :model do
   it 'returns final standings' do
     t = create(:completed_tournament)
     winning_team = t.teams[4]
-    winning_team.scores.map{ |score| score.update(score: 0) }
+    winning_team.scores.map{ |score| score.update(score: 100) }
     expect(t.final_standings[0].number).to eq(winning_team.number)
   end
 
   it 'returns final standings v2' do
     t = create(:completed_tournament)
-    expect(t.final_standings[0].score).to be < t.final_standings[1].score
+    for i in 0..8
+      expect(t.final_standings[0].score).to be < t.final_standings[1].score
+    end
   end
-
 end

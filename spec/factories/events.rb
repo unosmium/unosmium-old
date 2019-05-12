@@ -4,5 +4,9 @@ FactoryBot.define do
     trial { false }
     trialed { false }
     scoring { 0 }
+
+    factory :low_score_event do
+      scoring { 1}
+    end
   end
 end

@@ -8,14 +8,14 @@ RSpec.describe Team, type: :model do
       team = t.teams[1]
       team.scores.map{ |score| score.update(score: 101) }
 
-      expect(team.score).to eq(100)
+      expect(team.score).to eq(10)
     end
 
     it 'returns sum of team placings x2' do
       team = t.teams[1]
       team.scores.map{ |score| score.update(score: 0) }
 
-      expect(team.score).to eq(10)
+      expect(team.score).to eq(100)
     end
   end
 end

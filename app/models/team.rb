@@ -20,7 +20,7 @@ class Team < ApplicationRecord
   validates_uniqueness_of :number, scope: :tournament_id
 
   def score
-    points - penalized_points
+    points + penalized_points
   end
 
   def points
