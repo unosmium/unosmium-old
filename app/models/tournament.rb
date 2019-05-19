@@ -1,7 +1,7 @@
 class Tournament < ApplicationRecord  
   enum level: [:Invitational, :Regionals, :States, :Nationals]
   enum division: [:A, :B, :C]
-  enum state: UnitedStates.postal_codes.map(&:to_s).map(&:to_sym)
+  enum state: UnitedStates.postal_codes.map { |c| c.to_s.to_sym }
 
   has_many :events
   has_many :teams
