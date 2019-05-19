@@ -18,7 +18,7 @@ class Tournament < ApplicationRecord
   validates :division, presence: true
   validates :year, presence: true
   validates :date, presence: true
-  validates :state, presense: true, if: proc { |t| t.Regionals? || t.States? }
+  validates :state, presence: true, if: proc { |t| t.Regionals? || t.States? }
 
 
   def number_of_teams
