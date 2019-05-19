@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tournament do
-    name { "Test Tournament" }
+    location { "Testing Site" }
     level { 0 }
     division { 1 }
     year { 2019 }
