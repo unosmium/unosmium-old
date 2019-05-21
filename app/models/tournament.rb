@@ -30,6 +30,6 @@ class Tournament < ApplicationRecord
   end
 
   def final_standings
-    teams.sort_by(&:score)
+    teams.sort_by(&:points)
   end
 end

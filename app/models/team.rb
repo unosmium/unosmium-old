@@ -18,18 +18,8 @@ class Team < ApplicationRecord
 
   validates_uniqueness_of :number, scope: :tournament_id
 
-  def score
-    points + penalized_points
-  end
-
+  # total team points earned from event scores and penalties
   def points
-    tournament.events.reduce(0) do |points, event|
-      next if event.trial || event.trialed
-      points + event.placing(number)
-    end
-  end
-
-  def penalized_points
-    penalties.reduce(0) { |sum, penalty| sum + penalty.points }
+    scores.sum(&:points) + penalties.sum(&:points)
   end
 end
