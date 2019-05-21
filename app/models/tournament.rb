@@ -29,7 +29,11 @@ class Tournament < ApplicationRecord
     teams.count { |t| !t.exhibition? }
   end
 
-  def final_standings
+  def placings
     teams.sort_by(&:points)
+  end
+
+  def standings
+    teams.sort_by(&:points).reject(&:exhibition)
   end
 end
