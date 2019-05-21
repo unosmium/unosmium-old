@@ -12,12 +12,20 @@ class Score < ApplicationRecord
 
   # team points to be awarded to the team with this score
   def points
+    return 0 if event.trial? || event.trialed?
+
+    points_if_not_trial
+  end
+
+  # team points ignoring trial/trialed status
+  def points_if_not_trial
     n = event.tournament.number_of_competing_teams
 
     if disqualified? then n + 2
     elsif !participated? then n + 1
     elsif score.nil? then n
     else calculate_points
+    end
   end
 
   private
