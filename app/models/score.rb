@@ -28,6 +28,11 @@ class Score < ApplicationRecord
     end
   end
 
+  # overall place in event, including exhibition teams
+  def place
+    event.placings.find_index(self) + 1
+  end
+
   private
 
   # additional points logic for exhibition teams, somewhat arbitrary
