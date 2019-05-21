@@ -19,7 +19,7 @@ class Score < ApplicationRecord
 
   # team points ignoring trial/trialed status
   def points_if_not_trial
-    n = event.tournament.number_of_competing_teams
+    n = event.tournament.number_of_non_exhibition_teams
 
     if disqualified? then n + 2
     elsif !participated? then n + 1

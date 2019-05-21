@@ -25,8 +25,8 @@ class Tournament < ApplicationRecord
     teams.length
   end
 
-  def number_of_competing_teams
-    teams.reduce(0) { |sum, team| sum + (team.exhibition ? 0 : 1) }
+  def number_of_non_exhibition_teams
+    teams.count { |t| !t.exhibition? }
   end
 
   def final_standings
