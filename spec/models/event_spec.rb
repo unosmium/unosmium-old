@@ -26,6 +26,5 @@ RSpec.describe Event, type: :model do
       sorted_scores = event.scores.sort_by{ |score| score.score}.reverse
       expect(event.standings).to eq(sorted_scores)
     end
-
   end
 end
