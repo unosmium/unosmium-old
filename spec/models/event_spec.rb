@@ -12,8 +12,8 @@ RSpec.describe Event, type: :model do
 
     it 'excludes exhibition teams' do
       event = t.events[0]
-      allow(event.scores[0].team).to receive(:exhibition).and_return(true)
-      sorted_scores = event.scores.sort_by{ |score| score.score}.reject{ |s| s.team.exhibition? }.reverse
+      event.scores[0].team.update(exhibition: true)
+      sorted_scores = event.scores.drop(1).sort_by{ |score| score.score }.reverse
       expect(event.standings).to eq(sorted_scores)
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe Event, type: :model do
     it 'has standings sort scores' do 
       event = t.events[0]
       sorted_scores = event.scores.sort_by{ |score| score.score}.reverse
-      expect(event.standings).to eq(sorted_scores)
+      expect(event.placings).to eq(sorted_scores)
     end
   end
 end
