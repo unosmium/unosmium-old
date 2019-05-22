@@ -1,21 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  describe 'team#score' do
+  describe 'team#points' do
     let(:t) { create(:completed_tournament)}
 
-    it 'returns sum of team placings' do
+    it 'returns sum of team placings without penalties' do
       team = t.teams[1]
       team.scores.map{ |score| score.update(score: 101) }
 
-      expect(team.score).to eq(10)
-    end
-
-    it 'returns sum of team placings x2' do
-      team = t.teams[1]
-      team.scores.map{ |score| score.update(score: 0) }
-
-      expect(team.score).to eq(100)
+      expect(team.points).to eq(10)
     end
   end
 end
