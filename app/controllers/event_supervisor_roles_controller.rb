@@ -40,6 +40,6 @@ class EventSupervisorRolesController < ApplicationController
   private
 
   def event_supervisor_params
-    params.require(:event_supervisor_role).permit(:user_id, :tournament_id)
+    params.require(:event_supervisor_role).permit(:user_id, :event_id)
   end
 end

@@ -25,7 +25,7 @@ class TournamentsController < ApplicationController
 
   def results
     @tournament = Tournament.find(params[:id])
-    @results = @tournament.final_standings
+    @results = @tournament.standings
   end
 
   private
