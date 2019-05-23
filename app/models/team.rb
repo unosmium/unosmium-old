@@ -22,4 +22,11 @@ class Team < ApplicationRecord
   def points
     scores.sum(&:points) + penalties.sum(&:points)
   end
+
+  # number of first standings, second standings, third standings, etc.
+  def standing_counts
+    (1..(tournament.number_of_non_exhibition_teams + 2)).map do |p|
+      scores.count { |s| s.points == p }
+    end
+  end
 end

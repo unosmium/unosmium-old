@@ -28,10 +28,22 @@ class Tournament < ApplicationRecord
   end
 
   def placings
-    teams.sort_by(&:points)
+    teams.sort do |a,b|
+      cmp = a.points - b.points
+      cmp.zero? ? break_tie(a, b) : cmp
+    end
   end
 
   def standings
-    teams.sort_by(&:points).reject(&:exhibition)
+    placings.reject(&:exhibition)
+  end
+
+  private
+
+  def break_tie(team_a, team_b)
+    team_a.standing_counts
+      .zip(team_b.standing_counts)
+      .map { |counts| counts.last - counts.first }
+      .find(proc { team_a.number <=> team_b.number }, &:nonzero?)
   end
 end
