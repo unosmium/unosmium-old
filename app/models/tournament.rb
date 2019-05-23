@@ -7,9 +7,7 @@ class Tournament < ApplicationRecord
   has_many :teams
 
   has_many :admin_roles
-  has_many :event_supervisor_roles
   has_many :admins, through: :admin_roles, class_name: "User", source: :user
-  has_many :event_supervisors, through: :event_supervisor_roles, class_name: "User", source: :user
 
   has_and_belongs_to_many :presentations
 

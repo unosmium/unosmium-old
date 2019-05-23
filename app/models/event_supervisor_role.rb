@@ -1,3 +1,4 @@
-class EventSupervisorRole < Role
-
+class EventSupervisorRole < ApplicationRecord
+  belongs_to :event
+  belongs_to :user
 end

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_many :roles
-  has_many :tournaments, through: :roles
+  has_many :admin_roles
+  has_many :tournaments, through: :admin_roles
+
+  has_many :event_supervisor_roles
+  has_many :events, through: :event_supervisor_roles
 
   validates :first_name, presence: true
   validates :last_name, presence: true

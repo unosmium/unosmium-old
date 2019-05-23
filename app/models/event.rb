@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   enum scoring: [:high, :low]
 
   has_many :scores
+  has_one :event_supervisor_role
   belongs_to :tournament
 
   validates :name, presence: true

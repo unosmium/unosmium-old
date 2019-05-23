@@ -10,15 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_234359) do
+ActiveRecord::Schema.define(version: 2019_05_23_132801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "event_supervisors_events", id: false, force: :cascade do |t|
-    t.bigint "event_supervisor_id", null: false
+  create_table "admin_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tournament_id"], name: "index_admin_roles_on_tournament_id"
+    t.index ["user_id"], name: "index_admin_roles_on_user_id"
+  end
+
+  create_table "event_supervisor_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "event_id", null: false
-    t.index ["event_id", "event_supervisor_id"], name: "index_events_on_supervisors", unique: true
+    t.boolean "finalized", default: false, null: false
+    t.bigint "counseled_by_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["counseled_by_id"], name: "index_event_supervisor_roles_on_counseled_by_id"
+    t.index ["event_id"], name: "index_event_supervisor_roles_on_event_id"
+    t.index ["user_id"], name: "index_event_supervisor_roles_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -51,16 +66,6 @@ ActiveRecord::Schema.define(version: 2019_05_18_234359) do
     t.bigint "presentation_id", null: false
     t.index ["presentation_id"], name: "index_presentations_tournaments_on_presentation_id"
     t.index ["tournament_id"], name: "index_presentations_tournaments_on_tournament_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.bigint "tournament_id", null: false
-    t.index ["tournament_id"], name: "index_roles_on_tournament_id"
-    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -114,10 +119,13 @@ ActiveRecord::Schema.define(version: 2019_05_18_234359) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "admin_roles", "tournaments"
+  add_foreign_key "admin_roles", "users"
+  add_foreign_key "event_supervisor_roles", "admin_roles", column: "counseled_by_id"
+  add_foreign_key "event_supervisor_roles", "events"
+  add_foreign_key "event_supervisor_roles", "users"
   add_foreign_key "events", "tournaments"
   add_foreign_key "penalties", "teams"
-  add_foreign_key "roles", "tournaments"
-  add_foreign_key "roles", "users"
   add_foreign_key "scores", "events"
   add_foreign_key "scores", "teams"
   add_foreign_key "teams", "tournaments"
