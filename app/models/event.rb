@@ -32,4 +32,12 @@ class Event < ApplicationRecord
   def standings_including(team)
     placings.reject { |p| p.team.exhibition? && p.team != team }
   end
+
+  # groups of tied scores, may exist in between raw score entry and tiebreaking
+  def ties
+    placings.select { |s| s.participated? && !s.disqualified? }
+            .group_by { |s| [s.tier, s.score, s.tiebreaker_place] }
+            .values
+            .reject { |g| g.size == 1 }
+  end
 end
