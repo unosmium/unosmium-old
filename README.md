@@ -26,7 +26,7 @@ These instructions assume some familiarity with the using command line.
 
 1. Clone this repository:
    ```
-   git clone https://github.com/zqianem/unosmium.git && cd unosmium
+   git clone https://github.com/unosmium/unosmium.git && cd unosmium
    ```
 2. Login to Heroku CLI:
    ```
